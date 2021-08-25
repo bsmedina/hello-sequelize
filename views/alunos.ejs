@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos</title>
+</head>
+<body>
+    <form action="/" method="post">
+        Nome: <input type="text" name="nome"><br>
+        Sobrenome: <input type="text" name="sobrenome"><br>
+        Email: <input type="text" name="email"><br>
+        Ano Matricula: <input type="number" name="ano_matricula"><br>
+        <input type="submit" value="Enviar cadastro">
+    </form>
+
+    <div>
+        <% alunos.forEach(aluno => { %>
+            <form method="POST" action="/alunos/atualizar/<%=aluno.id%>">
+                Nome: <input required type="text" name="nome" value="<%=aluno.nome%>"><br>
+                Sobrenome: <input required type="text" name="sobrenome" value="<%=aluno.sobrenome%>"><br>
+                Email: <input required type="text" name="email" value="<%=aluno.email%>"><br>
+                Ano matricula: <input required type="number" name="ano_matricula" value="<%=aluno.ano_matricula%>"><br>          
+                <a href="/alunos/deletar/<%=aluno.id%>">Deletar</a>
+                <a href="/alunos/matricular/<%=aluno.id%>">Matricular no corrente</a>
+                <input type="submit" value="Atualizar dados">
+                <hr><br>
+            </form>
+        <% }) %>
+    </div>
+</body>
+</html>
